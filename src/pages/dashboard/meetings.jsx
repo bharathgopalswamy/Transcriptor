@@ -12,6 +12,7 @@ import {
   Tooltip,
   Button,
 } from "@material-tailwind/react";
+
 import {
   HomeIcon,
   ChatBubbleLeftEllipsisIcon,
@@ -22,13 +23,20 @@ import { Link } from "react-router-dom";
 import { ProfileInfoCard, MessageCard } from "@/widgets/cards";
 import { platformSettingsData, conversationsData, projectsData } from "@/data";
 
-export function Profile() {
+export function Meetings() {
+  const sampleVideoUrl = 'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4';
+
   return (
     <>
-      <div className="relative mt-8 h-72 w-full overflow-hidden rounded-xl bg-[url('/img/background-image.png')] bg-cover	bg-center">
-        <div className="absolute inset-0 h-full w-full bg-gray-900/75" />
+      <div className="relative mt-8 h-80 w-full overflow-hidden rounded-xl bg-[url('/img/background-image.png')] bg-cover bg-center">
+        <div className="absolute inset-0 h-full w-full bg-gray-900/75">
+          <video className="w-full h-full object-cover" autoPlay loop muted controls>
+            <source src={sampleVideoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
-      <Card className="mx-3 -mt-16 mb-6 lg:mx-4 border border-blue-gray-100">
+      <Card className="mx-3 mt-20 mb-8 lg:mx-4 border border-blue-gray-100">
         <CardBody className="p-4">
           <div className="mb-10 flex items-center justify-between flex-wrap gap-6">
             <div className="flex items-center gap-6">
@@ -56,11 +64,11 @@ export function Profile() {
                 <TabsHeader>
                   <Tab value="app">
                     <HomeIcon className="-mt-1 mr-2 inline-block h-5 w-5" />
-                    App
+                    Notes
                   </Tab>
                   <Tab value="message">
                     <ChatBubbleLeftEllipsisIcon className="-mt-0.5 mr-2 inline-block h-5 w-5" />
-                    Message
+                    Transcript
                   </Tab>
                   <Tab value="settings">
                     <Cog6ToothIcon className="-mt-1 mr-2 inline-block h-5 w-5" />
@@ -218,4 +226,4 @@ export function Profile() {
   );
 }
 
-export default Profile;
+export default Meetings;
