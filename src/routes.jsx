@@ -5,6 +5,7 @@ import {
   InformationCircleIcon,
   ServerStackIcon,
   RectangleStackIcon,
+  CalendarIcon
 } from "@heroicons/react/24/solid";
 import { Home, Tables, Notifications, Meetings } from "@/pages/dashboard";
 import { SignIn, SignUp } from "@/pages/auth";
@@ -24,7 +25,7 @@ export const routes = [
         element: <Home />,
       },
       {
-        icon: <UserCircleIcon {...icon} />,
+        icon: <CalendarIcon {...icon} />,
         name: "Meetings",
         path: "/meetings",
         element: <Meetings />,
