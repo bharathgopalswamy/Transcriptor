@@ -94,24 +94,24 @@ export function Meetings() {
             </div>
           </div>
           <div className="grid-cols-1 mb-12 grid gap-12 px-4 lg:grid-cols-2 xl:grid-cols-1">
-            {/* Conditionally render content based on the active tab */}
+           
             {activeTab === "notes" && (
               <ReactQuill
                 theme="snow"
                 placeholder="Add your notes here..."
                 className="h-60 bg-gray-100 p-2 rounded no-outline"
-                style={{ border: "none", boxShadow: "none" }} // Add style to remove border and box shadow
+                style={{ border: "none", boxShadow: "none" }} 
               />
             )}
             {activeTab === "transcripts" && (
               <div className="h-60 bg-gray-100 p-2 rounded no-outline">
-                {/* Display transcript content here */}
+                
                 <p>Transcript content goes here.</p>
               </div>
             )}
             {activeTab === "insights" && (
               <div className="h-60 bg-gray-100 p-2 rounded no-outline">
-                {/* Display insights content here */}
+               
                 <p>Insights content goes here.</p>
               </div>
             )}
