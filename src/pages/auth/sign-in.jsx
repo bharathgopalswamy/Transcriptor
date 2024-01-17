@@ -26,20 +26,21 @@ const [email, setEmail] = useState('');
     
   };
 
-  const handleSignIn = async () => {
+ const handleSignIn = async () => {
     try {
       const response = await axios.post('http://localhost:3001/api/login', {
         email,
         password,
       });
+
       console.log(response.data.message);
-      // Handle successful login, e.g., redirect user
+
+      // Redirect to the dashboard on successful login
+      history.push('/dashboard/home');
     } catch (error) {
       console.error(error.response.data.message);
-      // Handle login error, e.g., display error message
     }
   };
-
   return (
     <section className="m-8 flex gap-4">
       <div className="w-full lg:w-3/5 mt-24">

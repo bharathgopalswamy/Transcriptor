@@ -5,10 +5,24 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
-
+import { Link } from "react-router-dom"; 
+import React, { useState } from 'react';
+import axios from 'axios';
 
 export function SignUp() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post('http://localhost:3000/auth/sign-up', { email, password, confirmPassword })
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err));
+
+  };
+  
   return (
     <section className="m-8 flex">
             <div className="w-2/5 h-full hidden lg:block">
@@ -22,20 +36,43 @@ export function SignUp() {
           <Typography variant="h2" className="font-bold mb-4">Join Us Today</Typography>
           <Typography variant="paragraph" color="blue-gray" className="text-lg font-normal">Enter your email and password to register.</Typography>
         </div>
-        <form className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2">
-          <div className="mb-1 flex flex-col gap-6">
-            <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
-              Your email
-            </Typography>
-            <Input
-              size="lg"
-              placeholder="name@mail.com"
-              className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-              labelProps={{
-                className: "before:content-none after:content-none",
-              }}
-            />
-          </div>
+        <form className="mt-8 mb-2 mx-auto w-80 max-w-screen-lg lg:w-1/2" onSubmit={handleSubmit}>
+        <div className="mb-1 flex flex-col gap-6">
+  <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+    Your email
+  </Typography>
+  <Input
+    size="lg"
+    placeholder="name@mail.com"
+    className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
+    onChange={(e)=> setEmail(e.target.value)}
+  />
+</div>
+<div className="mb-1 flex flex-col gap-6">
+  <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+    Password
+  </Typography>
+  <Input
+    size="lg"
+    type="password"
+    placeholder="Enter your password"
+    value={password}
+    onChange={(e)=> setPassword(e.target.value)}
+  />
+</div>
+<div className="mb-1 flex flex-col gap-6">
+  <Typography variant="small" color="blue-gray" className="-mb-3 font-medium">
+    Confirm Password
+  </Typography>
+  <Input
+    size="lg"
+    type="password"
+    placeholder="Confirm your password"
+    value={confirmPassword}
+    onChange={(e)=> setConfirmPassword(e.target.value)}
+  />
+</div>
+
           <Checkbox
             label={
               <Typography
@@ -54,7 +91,7 @@ export function SignUp() {
             }
             containerProps={{ className: "-ml-2.5" }}
           />
-          <Button className="mt-6" fullWidth>
+          <Button className="mt-6" fullWidth onClick={handleSubmit}>
             Register Now
           </Button>
 
